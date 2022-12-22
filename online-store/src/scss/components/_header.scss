@@ -4,11 +4,9 @@
   padding: 20px 0;
   background-color: $colorMain;
   color: $colorTextSecondary;
-  // .header__container
-  &__container {
-    @include flex(space-between, center)
-
-  }
+}
+.header-head {
+  @include flex(space-between, center)
 }
 .logo {
   @include flex(start, center);
