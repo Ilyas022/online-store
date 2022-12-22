@@ -1,15 +1,10 @@
-.app-toolbar {
-}
+
 .toolbar {
   @include font(14px, 'OpenSans-Regular');
-  background-color: $colorMain;
-  color: $colorTextSecondary;
-  // .toolbar__container
-  &__container {
-    @include flex(space-between);
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
+  @include flex(space-between);
+  gap: 40px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   // .toolbar__contacts
   &__contacts {
     @include flex(start);
@@ -53,6 +48,4 @@
     height: 16px;
     width: 16px;
   }
-  // .toolbar-shoping-cart__counter
-  &__counter {}
 }

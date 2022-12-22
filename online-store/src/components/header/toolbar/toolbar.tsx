@@ -1,12 +1,11 @@
 import React from "react";
-import callIcon from '../../assets/img/icons/ringer-volume.png'
-import adress from '../../assets/img/icons/address.png'
-import cartIcon from '../../assets/img/icons/shopping-mall.png'
+import callIcon from '../../../assets/img/icons/ringer-volume.png'
+import adress from '../../../assets/img/icons/address.png'
+import cartIcon from '../../../assets/img/icons/shopping-mall.png'
 
 const Toolbar = () => {
   return (
-    <div className="app-toolbar toolbar">
-      <div className="toolbar__container _container">
+    <div className="header__toolbar toolbar">
         <div className="toolbar__contacts">
         <div className="toolbar__call">
           <a href="tel: +375292281337">
@@ -27,7 +26,6 @@ const Toolbar = () => {
           <div className="toolbar__shoping-cart toolbar-shoping-cart">
             <img className="toolbar-shoping-cart__icon" src={cartIcon} alt="shoping cart icon"/>
             <div className="toolbar-shoping-cart__counter">0</div>
-          </div>
       </div>
     </div>
   )
