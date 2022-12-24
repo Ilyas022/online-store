@@ -39,6 +39,14 @@
 @import "components/_header.scss";
 /* /import header */
 
+/* import filters */
+@import "components/_filters.scss";
+/* /import filters */
+
+/* import products */
+@import "components/_products.scss";
+/* /import products */
+
 // ==================================== components/ ======================================
 
 // ==================================== layout/ ======================================
@@ -57,6 +65,10 @@
 // ==================================== pages ======================================
 
 // ==================================== pages/ ======================================
+
+/* import mainPage */
+@import "pages/_mainPage.scss";
+/* /import mainPage */
 
 // ==================================== themes ======================================
 

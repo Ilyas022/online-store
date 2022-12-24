@@ -1,25 +1,14 @@
 .header {
   position: sticky;
+  z-index: 10;
   top: 0;
   padding: 20px 0;
+  margin-bottom: 40px;
   background-color: $colorMain;
   color: $colorTextSecondary;
-}
-.header-head {
-  @include flex(space-between, center)
-}
-.logo {
-  @include flex(start, center);
-  gap: 20px;
-  @include font(30px, "OpenSans-Regular");
-  // .logo__img
-  &__img {
-    height: 48px;
-    width: 48px;
-  }
-  // .logo__text
-  &__text {
-    margin-top: -5px;
+  // .header__container
+  &__container {
+    @include flex(space-between, center)
   }
 }
 

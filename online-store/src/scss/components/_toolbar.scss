@@ -32,8 +32,6 @@
   &__working-time {}
   // .toolbar__shoping-cart
   &__shoping-cart {
-    @include flex(start);
-    gap: 10px;
   }
 }
 .working-time {
@@ -43,9 +41,12 @@
   &__time {}
 }
 .toolbar-shoping-cart {
+  @include flex(start);
+  gap: 10px;
+  font-size: 20px;
   // .toolbar-shoping-cart__icon
   &__icon {
-    height: 16px;
-    width: 16px;
+    height: 30px;
+    width: 30px;
   }
 }

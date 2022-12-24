@@ -1,0 +1,9 @@
+.catalog {
+  font-size: 16px;
+  padding: 0 2%;
+  // .catalog__container
+  &__container {
+    display: flex;
+    gap: 20px;
+  }
+}
