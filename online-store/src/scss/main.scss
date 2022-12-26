@@ -47,6 +47,14 @@
 @import "components/_products.scss";
 /* /import products */
 
+/* import cart-product */
+@import "components/_cartProduct.scss";
+/* /import cart-product */
+
+/* import cart-Summary */
+@import "components/_cartSummary.scss";
+/* /import cart-Summary */
+
 // ==================================== components/ ======================================
 
 // ==================================== layout/ ======================================
@@ -69,6 +77,10 @@
 /* import mainPage */
 @import "pages/_mainPage.scss";
 /* /import mainPage */
+
+/* import cartPage */
+@import "pages/_cartPage.scss";
+/* /import cartPage */
 
 // ==================================== themes ======================================
 

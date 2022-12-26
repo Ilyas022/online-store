@@ -1,6 +1,6 @@
 import React from "react";
-import Filters from "./filters/filters";
-import Products from "./products/products";
+import Filters from "./Filters/Filters";
+import Products from "./Products/Products";
 
 
 

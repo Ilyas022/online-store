@@ -4,7 +4,7 @@
   color: $colorTextSecondary;
   // .footer__container
   &__container {
-    @include flex(space-around, center)
+    @include flex(space-between, center)
   }
   // .footer__developer-contacts
   &__developer-contacts {}

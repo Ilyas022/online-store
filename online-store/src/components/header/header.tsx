@@ -1,6 +1,6 @@
 import React from "react";
-import Toolbar from "../toolbar";
-import Logo from '../logo'
+import Toolbar from "../Toolbar";
+import Logo from '../Logo'
 
 const Header = () => {
   return (

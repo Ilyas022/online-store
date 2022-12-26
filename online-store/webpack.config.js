@@ -10,6 +10,7 @@ const devServer = (isDev) => !isDev ? {} : {
     open: true,
     hot: true,
     port: 8000,
+    historyApiFallback: true,
   }
 };
 

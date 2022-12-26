@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from '../logo';
+import Logo from '../Logo';
 import ghLogo from '../../assets/img/icons/gh-logo.png'
 import rsLogo from '../../assets/img/icons/rs-logo.svg'
 
