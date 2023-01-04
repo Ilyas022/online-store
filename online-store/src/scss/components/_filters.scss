@@ -28,8 +28,6 @@
 .categories {
 }
 .filters-check{
-  opacity: 0;
-  z-index: -1;
   position: relative;
   &::before {
     content: '';
