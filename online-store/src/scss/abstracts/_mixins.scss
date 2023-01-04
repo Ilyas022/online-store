@@ -1,0 +1,10 @@
+@mixin flex($main: center, $secondary: center) {
+  display: flex;
+  justify-content:$main;
+  align-items: $secondary;
+}
+
+@mixin font($size, $fam) {
+  font-size: $size;
+  font-family: $fam;
+}

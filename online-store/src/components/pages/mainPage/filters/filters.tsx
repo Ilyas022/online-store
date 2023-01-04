@@ -1,0 +1,92 @@
+import React from "react";
+
+export default function Filters() {
+  return (
+    <div className="catalog__filters filters">
+      <div className="filters-list categories">
+        <h3 className="filters__title">Categories</h3> 
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="blackTea" />
+          <label htmlFor="blackTea">Black tea</label>
+        </div>
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="blackTea" />
+          <label htmlFor="blackTea">Black tea</label>
+        </div>
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="blackTea" />
+          <label htmlFor="blackTea">Black tea</label>
+        </div>
+      </div>
+      <div className="filters-list astringency">
+        
+      </div>
+      <div className="filters-list leaf-size">
+        <h3 className="filters__title">Leaf size</h3> 
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="bigLeaf" />
+          <label htmlFor="BigLeaf">Big Leaf</label>
+        </div>
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="mediumLeaf" />
+          <label htmlFor="mediumLeaf">Medium Leaf</label>
+        </div>
+      </div>
+      <div className="filters-list fermentation">
+        <h3 className="filters__title">Degree of tea fermentation</h3> 
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="strongFermentation" />
+          <label htmlFor="strongFermentation">Strong</label>
+        </div>
+        <div className="filters-list__item">
+          <input className="filters-check" type="checkbox" name="" id="mediumFermentation" />
+          <label htmlFor="mediumFermentation">Medium</label>
+        </div>
+        <div className="filters-list__item">
+          <input type="checkbox" name="" id="liteFermentation" />
+          <label htmlFor="liteFermentation">Lite</label>
+        </div>        
+      </div>
+      <div className="filters-list price">
+        <h3 className="filters__title">Price</h3>
+          <div className="filters-list__item filters-count">
+            <div className="filters-count__min">
+              0
+            </div>
+            <div className="filters-count__max">
+              100
+            </div>
+          </div>
+          <div className="filters-list__item filters-ranges">
+            <div className="filters-ranges__bar"></div>
+            
+              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" min="0" step="10"></input>
+              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" max="100" step="10"></input>
+          </div>
+          
+        
+      </div>
+      <div className="filters-list stock">
+        <h3 className="filters__title">Stock</h3>
+          <div className="filters-list__item filters-count">
+            <div className="filters-count__min">
+              0
+            </div>
+            <div className="filters-count__max">
+              100
+            </div>
+          </div>
+          <div className="filters-list__item filters-ranges">
+            <div className="filters-ranges__bar"></div>
+            
+              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" min="0" step="10"></input>
+              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" max="100" step="10"></input>
+          </div>
+          
+        
+      </div>
+      
+      
+    </div>
+  )
+}

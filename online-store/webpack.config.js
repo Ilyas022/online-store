@@ -10,6 +10,7 @@ const devServer = (isDev) => !isDev ? {} : {
     open: true,
     hot: true,
     port: 8000,
+    historyApiFallback: true,
   }
 };
 
@@ -20,7 +21,7 @@ module.exports = ({ dev }) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    assetModuleFilename: './assets/img/[name][ext]',
+    assetModuleFilename: './assets/[name][ext]',
     clean: true,
   },
   module: {
@@ -28,13 +29,16 @@ module.exports = ({ dev }) => ({
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
-        // generator: {
-        //   filename: './assets/a/[hash][ext]'
-        // }
+        generator: {
+          filename: 'assets/img/[name][ext]'
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name][ext]'
+        }
       },
       {
         test: /\.[tj]s|[tj]sx?$/,

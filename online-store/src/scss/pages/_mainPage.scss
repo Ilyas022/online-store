@@ -1,0 +1,10 @@
+.catalog {
+  font-size: 16px;
+  padding: 0 2%;
+  margin-bottom: 40px;
+  // .catalog__container
+  &__container {
+    display: flex;
+    gap: 20px;
+  }
+}

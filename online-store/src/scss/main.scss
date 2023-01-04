@@ -1,0 +1,95 @@
+// ==================================== abstract ======================================
+
+// import variables 
+@import "./abstracts/_variables.scss";
+// import variables 
+
+// import mixins
+@import "./abstracts/_mixins.scss";
+// import mixins 
+
+// ==================================== abstract/ ======================================
+
+// ==================================== base ======================================
+
+/* import reset */
+@import "./base/_reset.scss";
+/* /import reset */
+
+// import fonts
+@import "base/_fonts.scss";
+// import fonts
+
+/* import common */
+@import "base/_common.scss";
+/* /import common */
+
+// ==================================== base/ ======================================
+
+// ==================================== components ======================================
+
+/* import logo */
+@import "components/_logo.scss";
+/* /import logo */
+/* import toolbar */
+@import "components/_toolbar.scss";
+/* /import toolbar */
+
+/* import header */
+@import "components/_header.scss";
+/* /import header */
+
+/* import filters */
+@import "components/_filters.scss";
+/* /import filters */
+
+/* import products */
+@import "components/_products.scss";
+/* /import products */
+
+/* import cart-product */
+@import "components/_cartProduct.scss";
+/* /import cart-product */
+
+/* import cart-Summary */
+@import "components/_cartSummary.scss";
+/* /import cart-Summary */
+
+/* import cproduct */
+@import "components/_product.scss";
+/* /import cproduct */
+
+// ==================================== components/ ======================================
+
+// ==================================== layout/ ======================================
+
+/* import header */
+@import "layout/_header.scss";
+/* /import header */
+
+/* import footer */
+@import "layout/_footer.scss";
+/* /import footer */
+
+// ==================================== layout/ ======================================
+
+
+// ==================================== pages ======================================
+
+// ==================================== pages/ ======================================
+
+/* import mainPage */
+@import "pages/_mainPage.scss";
+/* /import mainPage */
+
+/* import cartPage */
+@import "pages/_cartPage.scss";
+/* /import cartPage */
+
+// ==================================== themes ======================================
+
+// ==================================== themes/ ======================================
+
+// ==================================== vendors ======================================
+
+// ==================================== vendors/ ======================================
