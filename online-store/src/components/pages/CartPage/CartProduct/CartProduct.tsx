@@ -9,7 +9,7 @@ export default function CartProduct() {
       </div>
       <div className="cart-product__info product-info">
         <div className="product-info__title">
-          tea Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime optio voluptate minima explicabo aliquid. Dolores adipisci, qui veritatis dolore voluptas magni fugiat voluptate possimus sint ab odit placeat reprehenderit nesciunt
+          tea Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime optio voluptate minima explicabo aliquid. Dolores adipisci, qui veritatis dolore voluptas magi fugiat voluptate possimus sint ab odit placeat reprehenderit nesciunt
         </div>
         <div className="product-info__description">
           des
