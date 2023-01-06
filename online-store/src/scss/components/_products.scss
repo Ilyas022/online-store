@@ -75,8 +75,11 @@
 .products-image {
   width: 100%;
   border-radius: 20px;
+  max-height: 204px;
 }
 .products-item {
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -89,7 +92,9 @@
   // .products-item__desc
   &__desc {}
   // .product-item__price
-  &__price {}
+  &__price {
+    margin-top: auto;
+  }
   // .products-item__hover
   &__hover {
     padding: 35px;
