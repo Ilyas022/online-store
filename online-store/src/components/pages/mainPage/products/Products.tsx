@@ -9,10 +9,15 @@ export default function Products() {
   const filterLeaf = useSelector((state: RootState) => state.filter.leaf)
   const filterType = useSelector((state: RootState) => state.filter.type)
 
+  const query: string[] = [];
+  
+  filterType.length > 0 ? query.push(`type=${filterType.join('|')}`) : ''
+  filterLeaf.length > 0 ? query.push(`leafSize=${filterLeaf.join('|')}`) : ''
+
   console.log(filterType, 'filtertype')
   console.log(filterLeaf, 'filterleaf')
   useEffect(() => {
-    fetch('https://63b6e4b81907f863aa05aef3.mockapi.io/teas?type=' + filterType.join('|') + '&leafSize=' + filterLeaf.join('|'))
+    fetch('https://63b6e4b81907f863aa05aef3.mockapi.io/teas?' + query.join('&'))
     .then(res => res.json())
     .then(teas => setTeas(teas))
   }, [filterType, filterLeaf])
