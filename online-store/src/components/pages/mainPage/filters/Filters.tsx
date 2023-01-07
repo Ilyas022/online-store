@@ -2,7 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { removeFilterType, setFilterType, removeFilterLeafType, setFilterLeafType } from "../../../../store/slices/filterSlice";
+import { addTeas } from "../../../../store/slices/teaSlice";
 import { RootState } from "../../../../store/store";
+import { Tea } from "../../../../types";
 
 export default function Filters() {
   const filterLeaf = useSelector((state: RootState) => state.filter.leaf)
@@ -10,7 +12,6 @@ export default function Filters() {
   const dispatch = useDispatch();
 
   const onClickCategory = (e: React.FormEvent) => {
-    console.log(e.currentTarget.id)
     if (filterType.includes(e.currentTarget.id)) {
       dispatch(removeFilterType(e.currentTarget.id))
     } else {
@@ -18,7 +19,6 @@ export default function Filters() {
     }
   }
   const onClickLeaf = (e: React.FormEvent) => {
-    console.log(e.currentTarget.id)
     if (filterLeaf.includes(e.currentTarget.id)) {
       dispatch(removeFilterLeafType(e.currentTarget.id))
     } else {
@@ -26,7 +26,6 @@ export default function Filters() {
     }
   }
 
-  console.log('filter',filterType)
   return (
     <div className="catalog__filters filters">
       <div className="filters-list categories">
