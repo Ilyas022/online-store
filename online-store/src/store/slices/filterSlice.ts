@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface FilterState {
   type: string[],
@@ -16,11 +15,9 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     setFilterType(state, action) {
-      console.log(action);
       state.type.push(action.payload);
     },
     removeFilterType(state, action) {
-      console.log(action, 'remove');
       state.type = state.type.filter(type => type !== action.payload)
     },
     setFilterLeafType(state, action) {

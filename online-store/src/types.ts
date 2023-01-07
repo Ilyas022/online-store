@@ -6,6 +6,7 @@ export interface Tea {
   image: string
   price: string
   rating: string
+  leafSize: string
 }
 
 export interface CartItem extends Tea {
