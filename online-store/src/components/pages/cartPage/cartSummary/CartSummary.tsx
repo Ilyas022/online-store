@@ -1,6 +1,8 @@
 import React from "react";
+import { Tea } from '../../../../types';
 
 export default function CartSummary() {
+  const products = JSON.parse(localStorage.getItem('products')as string) as Tea[];
   return (
     <div className="cart-summary">
       <div className="cart-summary__header">
@@ -8,10 +10,10 @@ export default function CartSummary() {
       </div>
       <div className="cart-summary__body">
         <div className="cart-summary__products-count">
-          Products: 6
+          Products: {products? products.length : 0}
         </div>
         <div className="cart-summary__products-amount">
-          Amount: 1500$
+          Amount: {products ? products.reduce((sum,tea) => sum + Number(tea.price), 0) : 0}
         </div>
         <div className="cart-summary__promo">
           <input className="promo-code search-field" type="search" placeholder="Enter promo code"></input>
