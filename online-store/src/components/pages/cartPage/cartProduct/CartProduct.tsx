@@ -30,7 +30,8 @@ export default function CartProduct({product, productNumber} : CartProductProps)
         </div>
         <div className="product-info__other">
           <div className="product-info__rating">Rating: {product.tea.rating}</div>
-          <div className="product-info__discount">Discount: 0%</div>
+          <div className="product-info__discount">Type: {product.tea.type}</div>
+          <div className="product-info__discount">Leaf Size: {product.tea.leafSize}</div>
         </div>
       </div>
         <div className="cart-product-control">

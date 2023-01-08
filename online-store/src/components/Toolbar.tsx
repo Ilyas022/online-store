@@ -3,8 +3,11 @@ import callIcon from '../assets/img/icons/ringer-volume.png'
 import adress from '../assets/img/icons/address.png'
 import cartIcon from '../assets/img/icons/shopping-mall.png'
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 
 export default function Toolbar() {
+  const products = useSelector((state: RootState) => state.cart)
   return (
     <div className="header__toolbar toolbar">
       <div className="toolbar__contacts">
@@ -25,8 +28,8 @@ export default function Toolbar() {
       </div>
         <NavLink className="toolbar__shoping-cart toolbar-shoping-cart" to="/cart">
           <img className="toolbar-shoping-cart__icon" src={cartIcon} alt="shoping cart icon"/>
-          <div className="toolbar-shoping-cart__counter">0</div>
-          <div className="toolbar-shoping-cart__amount">Total price: 0$</div>
+          <div className="toolbar-shoping-cart__counter">{products.reduce((count,item) => count + item.count, 0)}</div>
+          <div className="toolbar-shoping-cart__amount">Total price: {products.reduce((sum,item) => sum + item.count * item.tea.price, 0)}$</div>
           
       </NavLink>
     </div>

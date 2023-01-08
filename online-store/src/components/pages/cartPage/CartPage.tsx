@@ -14,16 +14,17 @@ export default function cartPage() {
   }
 
   const totalPrice = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
-  const [currentpage, setCurrentPage] = useState<number>(1);
-  useEffect(() => setCurrentPage(1), [displayedNumber, products.length])
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  useEffect(() => setCurrentPage(1), [displayedNumber])
+  useEffect(() => setCurrentPage(Math.ceil(products.length / displayedNumber)), [products.length])
   const handlePreviousPage = () => {
-    if (currentpage !== 1) {
-      setCurrentPage(currentpage - 1);
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
     }
   }
   const handleNextPage = () => {
-    if (currentpage !== Math.ceil(products.length / displayedNumber)) {
-      setCurrentPage(currentpage + 1);
+    if (currentPage !== Math.ceil(products.length / displayedNumber)) {
+      setCurrentPage(currentPage + 1);
     }
   }
   return (
@@ -44,14 +45,14 @@ export default function cartPage() {
               <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
                 <div className="dec-button button" onClick={handlePreviousPage}>&lt;</div>
                 <div className="cart-products__pages">
-                  {currentpage}/{Math.ceil(products.length / displayedNumber)}
+                  {currentPage}/{Math.ceil(products.length / displayedNumber)}
                 </div>
                 <div className="inc-button button" onClick={handleNextPage}>&gt;</div>
               </div>
             </div>
             <div className="cart-products__body">
-              {products.filter((el, i) => i >= (currentpage - 1) * displayedNumber && i < (currentpage * displayedNumber))
-              .map((el, i) => <CartProduct key={el.tea.id} productNumber={i + 1 + displayedNumber*(currentpage - 1)} product={el} />)}
+              {products.filter((el, i) => i >= (currentPage - 1) * displayedNumber && i < (currentPage * displayedNumber))
+              .map((el, i) => <CartProduct key={el.tea.id} productNumber={i + 1 + displayedNumber*(currentPage - 1)} product={el} />)}
             </div>
 
           </div>
