@@ -1,5 +1,6 @@
 import React from "react";
-import { CartStateItem } from '../../../../store/slices/cartSlice';
+import { useDispatch } from 'react-redux';
+import { addProduct, CartStateItem, deleteProduct } from '../../../../store/slices/cartSlice';
 
 type CartProductProps = {
   productNumber : number
@@ -7,6 +8,13 @@ type CartProductProps = {
 }
 
 export default function CartProduct({product, productNumber} : CartProductProps) {
+  const dispatch = useDispatch();
+  const handleAddProduct = () => {
+    dispatch(addProduct(product));
+  }
+  const handleDeleteProduct = () => {
+    dispatch(deleteProduct(product));
+  }
   return (
     <div className="cart-product">
       <div className="cart-product__number">{productNumber}</div>
@@ -22,15 +30,15 @@ export default function CartProduct({product, productNumber} : CartProductProps)
         </div>
         <div className="product-info__other">
           <div className="product-info__rating">Rating: {product.tea.rating}</div>
-          <div className="product-info__discount">Discount: 10%</div>
+          <div className="product-info__discount">Discount: 0%</div>
         </div>
       </div>
         <div className="cart-product-control">
-          <div className="cart-product-control__stock">Stock: 68</div>
+          <div className="cart-product-control__stock">Stock: {product.tea.stock}</div>
           <div className="cart-product-control__inc-dec">
-            <div className="dec-button button">-</div>
+            <div className="dec-button button" onClick={handleDeleteProduct}>-</div>
             <div className="catr-product-control__number">{product.count}</div>
-            <div className="inc-button button">+</div>
+            <div className="inc-button button" onClick={handleAddProduct}>+</div>
           </div>
           <div className="cart-product-control__amount">{product.count * (product.tea.price as unknown as number)}$</div>
         </div>

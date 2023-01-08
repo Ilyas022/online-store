@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import CartProduct from "./cartProduct/CartProduct";
@@ -6,6 +6,26 @@ import CartSummary from "./cartSummary/CartSummary";
 
 export default function cartPage() {
   const products = useSelector((state: RootState) => state.cart)
+
+  const [displayedNumber, setDisplayedNumber] = useState<number>(products.length > 2 ? 3 : products.length)
+
+  const handleItemsCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDisplayedNumber(Number(e.target.value))
+  }
+
+  const totalPrice = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
+  const [currentpage, setCurrentPage] = useState<number>(1);
+  useEffect(() => setCurrentPage(1), [displayedNumber, products.length])
+  const handlePreviousPage = () => {
+    if (currentpage !== 1) {
+      setCurrentPage(currentpage - 1);
+    }
+  }
+  const handleNextPage = () => {
+    if (currentpage !== Math.ceil(products.length / displayedNumber)) {
+      setCurrentPage(currentpage + 1);
+    }
+  }
   return (
     <div className="cart" >
       {products.length ?
@@ -15,19 +35,23 @@ export default function cartPage() {
               <h1 className="cart-products__title">
                 Products in cart
               </h1>
-              <div className="cart-products__amount">Amount: 5000$</div>
+              <div className="cart-products__amount">Amount: {totalPrice}$</div>
 
               <div className="cart-products-number">
                 <span className="cart-products-number__text">Itmes: </span>
-                <input className="cart-products-number__count" type="number" defaultValue={3} min={1} max={products.length} />
+                <input className="cart-products-number__count" type="number" onChange={(e) => handleItemsCountChange(e)} defaultValue={displayedNumber} min={1} max={products.length} />
               </div>
-
-              <div className="cart-products__pages">
-                Pages: 3
+              <div style={{ 'display': 'flex', 'alignItems': 'center' }}>
+                <div className="dec-button button" onClick={handlePreviousPage}>&lt;</div>
+                <div className="cart-products__pages">
+                  {currentpage}/{Math.ceil(products.length / displayedNumber)}
+                </div>
+                <div className="inc-button button" onClick={handleNextPage}>&gt;</div>
               </div>
             </div>
             <div className="cart-products__body">
-              {products.map((el,i) => <CartProduct key={el.tea.id} productNumber={i+1} product={el}/>)}
+              {products.filter((el, i) => i >= (currentpage - 1) * displayedNumber && i < (currentpage * displayedNumber))
+              .map((el, i) => <CartProduct key={el.tea.id} productNumber={i + 1 + displayedNumber*(currentpage - 1)} product={el} />)}
             </div>
 
           </div>

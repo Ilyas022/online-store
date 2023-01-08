@@ -22,8 +22,10 @@ export const teaSlice = createSlice({
         type: action.payload.type,
         image: action.payload.image,
         price: action.payload.price,
-        rating: action.payload.description,
-        leafSize: action.payload.leafSize
+        rating: action.payload.rating,
+        leafSize: action.payload.leafSize,
+        image2: action.payload.image2,
+        stock: action.payload.stock
       });
     },
     removeTea: (state, action: PayloadAction<Tea>) => {
