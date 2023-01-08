@@ -69,21 +69,6 @@ export default function Filters() {
           <label htmlFor="mediumLeaf">Medium Leaf</label>
         </div>
       </div>
-      <div className="filters-list fermentation">
-        <h3 className="filters__title">Degree of tea fermentation</h3> 
-        <div className="filters-list__item">
-          <input type="checkbox" name="" id="strongFermentation" />
-          <label htmlFor="strongFermentation">Strong</label>
-        </div>
-        <div className="filters-list__item">
-          <input className="filters-check" type="checkbox" name="" id="mediumFermentation" />
-          <label htmlFor="mediumFermentation">Medium</label>
-        </div>
-        <div className="filters-list__item">
-          <input type="checkbox" name="" id="liteFermentation" />
-          <label htmlFor="liteFermentation">Lite</label>
-        </div>        
-      </div>
       <div className="filters-list price">
         <h3 className="filters__title">Price</h3>
           <div className="filters-list__item filters-count">
