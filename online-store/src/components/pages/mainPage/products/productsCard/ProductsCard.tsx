@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { addProduct } from '../../../../../store/slices/cartSlice';
@@ -13,7 +13,6 @@ export default function productsCard({tea}: {tea: Tea}) {
     navigate(path);
   }
   const dispatch = useDispatch();
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
   const products = useSelector((state: RootState) => state.cart)
   const addProductToCart = () => {
     dispatch(addProduct({tea : tea, count : 1}));
