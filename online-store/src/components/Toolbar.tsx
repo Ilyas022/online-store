@@ -26,6 +26,8 @@ export default function Toolbar() {
         <NavLink className="toolbar__shoping-cart toolbar-shoping-cart" to="/cart">
           <img className="toolbar-shoping-cart__icon" src={cartIcon} alt="shoping cart icon"/>
           <div className="toolbar-shoping-cart__counter">0</div>
+          <div className="toolbar-shoping-cart__amount">Total price: 0$</div>
+          
       </NavLink>
     </div>
   )

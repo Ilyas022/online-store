@@ -85,7 +85,7 @@ export default function Products() {
           
         </div>
         <div className="products-amount">
-          <span className="products-amount__title">Amount:</span>
+          <span className="products-amount__title">Found: </span>
           <span className="products-amount__count">0</span>
           
         </div>
