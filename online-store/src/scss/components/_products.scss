@@ -90,7 +90,14 @@
     @include font(24px, "PlayfairDisplay-Bold")
   }
   // .products-item__desc
-  &__desc {}
+  &__desc {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
   // .product-item__price
   &__price {
     margin-top: auto;

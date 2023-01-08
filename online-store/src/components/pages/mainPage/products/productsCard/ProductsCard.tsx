@@ -26,12 +26,13 @@ export default function productsCard({tea}: {tea: Tea}) {
           </div>
             <div className="products-item__rating">Rating: {tea.rating}</div>
             <div className="products-item__title">{tea.title}</div>
+            <div className="products-item__type">Type: {tea.type}</div>
+            <div className="products-item__size">Leaf size: {tea.leafSize}</div>
             <div className="products-item__desc">{tea.description}</div>
             <div className="products-item__price">Price: {tea.price}$</div>
             <div className="products-item__hover">
               <button className="products-item__info-button button" onClick={routeChange}>More info</button>
               <button className="products-item__add-button button" onClick={addProductToCart}>Add to cart</button>
-              
             </div>
             
         </div>
