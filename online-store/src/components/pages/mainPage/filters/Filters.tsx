@@ -1,12 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { removeFilterType, setFilterType, removeFilterLeafType, setFilterLeafType } from "../../../../store/slices/filterSlice";
+import { removeFilterType, setFilterType, removeFilterLeafType, setFilterLeafType, setMinPrice, setMaxPrice, setMinStock, setMaxStock } from "../../../../store/slices/filterSlice";
 import { addTeas } from "../../../../store/slices/teaSlice";
 import { RootState } from "../../../../store/store";
 import { Tea } from "../../../../types";
 
 export default function Filters() {
+  const minStock = useSelector((state: RootState) => state.filter.minStock)
+  const maxStock = useSelector((state: RootState) => state.filter.maxStock)
+  const minPrice = useSelector((state: RootState) => state.filter.minPrice)
+  const maxPrice = useSelector((state: RootState) => state.filter.maxPrice)
   const filterLeaf = useSelector((state: RootState) => state.filter.leaf)
   const filterType = useSelector((state: RootState)  => state.filter.type)
   const dispatch = useDispatch();
@@ -73,39 +77,33 @@ export default function Filters() {
         <h3 className="filters__title">Price</h3>
           <div className="filters-list__item filters-count">
             <div className="filters-count__min">
-              0
+              {minPrice}
             </div>
             <div className="filters-count__max">
-              100
+              {maxPrice}
             </div>
           </div>
           <div className="filters-list__item filters-ranges">
             <div className="filters-ranges__bar"></div>
-            
-              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" min="0" step="10"></input>
-              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" max="100" step="10"></input>
+              <input onInput={(e) => dispatch(setMinPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="0" max="50" step="5" value={minPrice} />
+              <input onInput={(e) => dispatch(setMaxPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="50" step="5" value={maxPrice} />
           </div>
-          
-        
       </div>
       <div className="filters-list stock">
         <h3 className="filters__title">Stock</h3>
           <div className="filters-list__item filters-count">
             <div className="filters-count__min">
-              0
+              {minStock}
             </div>
             <div className="filters-count__max">
-              100
+              {maxStock}
             </div>
           </div>
           <div className="filters-list__item filters-ranges">
             <div className="filters-ranges__bar"></div>
-            
-              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" min="0" step="10"></input>
-              <input onInput={(e) => console.log((e.target as HTMLInputElement).value)} className="filters-ranges__range" type="range" max="100" step="10"></input>
+              <input onInput={(e) => dispatch(setMinStock(e.currentTarget.value))} className="filters-ranges__range" type="range" min="0" max="50" step="5" value={minStock} />
+              <input onInput={(e) => dispatch(setMaxStock(e.currentTarget.value))} className="filters-ranges__range" type="range" max="145" step="5" value={maxStock} />
           </div>
-          
-        
       </div>
       
       
