@@ -31,27 +31,27 @@ export default function Filters() {
       <div className="filters-list categories">
         <h3 className="filters__title">Categories</h3> 
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="black"/>
+          <input onChange={onClickCategory} type="checkbox" name="" id="black" checked={filterType.includes('black') ? true : false} />
           <label htmlFor="blackTea">Black tea</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="yellow" />
+          <input onChange={onClickCategory} type="checkbox" name="" id="yellow" checked={filterType.includes('yellow') ? true : false} />
           <label htmlFor="blackTea">Yellow tea</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="puer" />
+          <input onChange={onClickCategory} type="checkbox" name="" id="puer" checked={filterType.includes('puer') ? true : false} />
           <label htmlFor="blackTea">Puer</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="oolong" />
+          <input onChange={onClickCategory} type="checkbox" name="" id="oolong" checked={filterType.includes('oolong') ? true : false} />
           <label htmlFor="blackTea">Oolong</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="white" />
+          <input onChange={onClickCategory} type="checkbox" name="" id="white" checked={filterType.includes('white') ? true : false} />
           <label htmlFor="blackTea">White</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickCategory} type="checkbox" name="" id="green" />
+          <input onChange={onClickCategory} type="checkbox" name="" id="green" checked={filterType.includes('green') ? true : false} />
           <label htmlFor="blackTea">Green</label>
         </div>
       </div>
@@ -61,28 +61,13 @@ export default function Filters() {
       <div className="filters-list leaf-size">
         <h3 className="filters__title">Leaf size</h3> 
         <div className="filters-list__item">
-          <input onClick={onClickLeaf} type="checkbox" name="" id="big" />
+          <input onChange={onClickLeaf} type="checkbox" name="" id="big" checked={filterLeaf.includes('big') ? true : false} />
           <label htmlFor="BigLeaf">Big Leaf</label>
         </div>
         <div className="filters-list__item">
-          <input onClick={onClickLeaf} type="checkbox" name="" id="medium" />
+          <input onChange={onClickLeaf} type="checkbox" name="" id="medium" checked={filterLeaf.includes('medium') ? true : false} />
           <label htmlFor="mediumLeaf">Medium Leaf</label>
         </div>
-      </div>
-      <div className="filters-list fermentation">
-        <h3 className="filters__title">Degree of tea fermentation</h3> 
-        <div className="filters-list__item">
-          <input type="checkbox" name="" id="strongFermentation" />
-          <label htmlFor="strongFermentation">Strong</label>
-        </div>
-        <div className="filters-list__item">
-          <input className="filters-check" type="checkbox" name="" id="mediumFermentation" />
-          <label htmlFor="mediumFermentation">Medium</label>
-        </div>
-        <div className="filters-list__item">
-          <input type="checkbox" name="" id="liteFermentation" />
-          <label htmlFor="liteFermentation">Lite</label>
-        </div>        
       </div>
       <div className="filters-list price">
         <h3 className="filters__title">Price</h3>

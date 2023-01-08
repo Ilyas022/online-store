@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { addProduct } from '../../../../../store/slices/cartSlice';
@@ -13,7 +13,6 @@ export default function productsCard({tea}: {tea: Tea}) {
     navigate(path);
   }
   const dispatch = useDispatch();
-  // const [isAddedToCart, setIsAddedToCart] = useState(false);
   const products = useSelector((state: RootState) => state.cart)
   const addProductToCart = () => {
     dispatch(addProduct({tea : tea, count : 1}));
@@ -26,12 +25,13 @@ export default function productsCard({tea}: {tea: Tea}) {
           </div>
             <div className="products-item__rating">Rating: {tea.rating}</div>
             <div className="products-item__title">{tea.title}</div>
+            <div className="products-item__type">Type: {tea.type}</div>
+            <div className="products-item__size">Leaf size: {tea.leafSize}</div>
             <div className="products-item__desc">{tea.description}</div>
             <div className="products-item__price">Price: {tea.price}$</div>
             <div className="products-item__hover">
               <button className="products-item__info-button button" onClick={routeChange}>More info</button>
               <button className="products-item__add-button button" onClick={addProductToCart}>Add to cart</button>
-              
             </div>
             
         </div>
