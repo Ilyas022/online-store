@@ -101,8 +101,8 @@ export default function Filters() {
           </div>
           <div className="filters-list__item filters-ranges">
             <div className="filters-ranges__bar"></div>
-              <input onInput={(e) => dispatch(setMinStock(e.currentTarget.value))} className="filters-ranges__range" type="range" min="0" max="50" step="5" value={minStock} />
-              <input onInput={(e) => dispatch(setMaxStock(e.currentTarget.value))} className="filters-ranges__range" type="range" max="145" step="5" value={maxStock} />
+              <input onInput={(e) => dispatch(setMinStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="0" max="145" step="5" value={minStock} />
+              <input onInput={(e) => dispatch(setMaxStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="145" step="5" value={maxStock} />
           </div>
       </div>
       

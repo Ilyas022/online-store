@@ -39,23 +39,16 @@ export const filterSlice = createSlice({
     setMinPrice(state, action) {
       console.log('pr', state.minPrice, state.maxPrice)
       console.log(action.payload)
-      if(action.payload > state.maxPrice) {
-        // const temp = state.maxPrice
-        state.maxPrice = action.payload
-        // state.minPrice = temp
-      } 
-      if(action.payload < state.maxPrice) {
-        state.minPrice = action.payload
-      }
+      if(action.payload < state.maxPrice) state.minPrice = action.payload
     },
     setMaxPrice(state, action) {
-      state.maxPrice = action.payload
+      if(action.payload > state.minPrice) state.maxPrice = action.payload
     },
     setMinStock(state, action) {
-      state.minStock = action.payload
+      if(action.payload < state.maxStock) state.minStock = action.payload
     },
     setMaxStock(state, action) {
-      state.maxStock = action.payload
+      if(action.payload > state.minStock) state.maxStock = action.payload
     },
   },
 })
