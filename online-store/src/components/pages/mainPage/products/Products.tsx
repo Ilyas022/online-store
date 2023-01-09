@@ -62,7 +62,7 @@ export default function Products() {
   }, [])
 
   useEffect(() => {
-    fetch('https://63b6e4b81907f863aa05aef3.mockapi.io/teas?'/* + query.join('&') */)
+    fetch('https://63b6e4b81907f863aa05aef3.mockapi.io/teas?')
     .then(res => res.json())
     .then(teas => dispatch(addTeas(teas)))
   }, [])

@@ -29,7 +29,7 @@ export const teaSlice = createSlice({
     // removeTea: (state, action: PayloadAction<Tea>) => {
     //   state.teas = state.teas.filter(tea => tea.id !== action.payload.id);
     // },
-    addTeas: (state, action) => {
+    addTeas(state, action) {
       state.teas = action.payload;
     }
   }

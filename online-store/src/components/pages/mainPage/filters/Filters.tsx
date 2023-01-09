@@ -97,8 +97,8 @@ export default function Filters() {
           </div>
           <div className="filters-list__item filters-ranges">
             <div className="filters-ranges__bar"></div>
-              <input onInput={(e) => dispatch(setMinPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="0" max="50" step="5" value={minPrice} />
-              <input onInput={(e) => dispatch(setMaxPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="50" step="5" value={maxPrice} />
+              <input onInput={(e) => dispatch(setMinPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="1" max="50" step="1" value={minPrice} />
+              <input onInput={(e) => dispatch(setMaxPrice(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="50" step="1" value={maxPrice} />
           </div>
       </div>
       <div className="filters-list stock">
@@ -113,8 +113,8 @@ export default function Filters() {
           </div>
           <div className="filters-list__item filters-ranges">
             <div className="filters-ranges__bar"></div>
-              <input onInput={(e) => dispatch(setMinStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="0" max="145" step="5" value={minStock} />
-              <input onInput={(e) => dispatch(setMaxStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="145" step="5" value={maxStock} />
+              <input onInput={(e) => dispatch(setMinStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" min="1" max="145" step="1" value={minStock} />
+              <input onInput={(e) => dispatch(setMaxStock(Number(e.currentTarget.value)))} className="filters-ranges__range" type="range" max="145" step="1" value={maxStock} />
           </div>
       </div>
       
