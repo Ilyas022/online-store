@@ -22,6 +22,14 @@ export const filterSlice = createSlice({
   name: 'filter',
   initialState,
   reducers: {
+    resetFilters(state) {
+      state.leaf = []
+      state.type = []
+      state.minPrice = 1
+      state.maxPrice = 50
+      state.minStock = 1
+      state.maxStock = 145
+    },
     setFilterType(state, action) {
       state.type.push(action.payload);
     },
@@ -54,6 +62,6 @@ export const filterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setFilterType, removeFilterType, setFilterLeafType, removeFilterLeafType, setMinPrice, setMaxPrice, setMinStock, setMaxStock } = filterSlice.actions
+export const { setFilterType, removeFilterType, setFilterLeafType, removeFilterLeafType, setMinPrice, setMaxPrice, setMinStock, setMaxStock, resetFilters } = filterSlice.actions
 
 export default filterSlice.reducer
