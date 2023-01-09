@@ -1,4 +1,5 @@
 export interface Tea {
+  [index: string]: string | number;
   id: number
   title: string
   description: string

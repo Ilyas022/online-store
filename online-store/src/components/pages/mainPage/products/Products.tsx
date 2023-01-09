@@ -6,7 +6,7 @@ import { RootState } from "../../../../store/store";
 import { useDispatch } from "react-redux";
 import { addTeas } from "../../../../store/slices/teaSlice";
 import { useNavigate } from "react-router-dom";
-import { setFilterLeafType, setFilterType, setMinPrice, setMaxPrice, setMinStock, setMaxStock } from "../../../../store/slices/filterSlice";
+import { setFilterLeafType, setFilterType, setMinPrice, setMaxPrice, setMinStock, setMaxStock, setSortType, setSortBy, setSortValue } from "../../../../store/slices/filterSlice";
 
 export default function Products() {
   
@@ -20,8 +20,9 @@ export default function Products() {
   const maxPrice = useSelector((state: RootState) => state.filter.maxPrice)
   const minStock = useSelector((state: RootState) => state.filter.minStock)
   const maxStock = useSelector((state: RootState) => state.filter.maxStock)
-
-  console.log(filterLeaf, filterType)
+  const sortBy = useSelector((state: RootState) => state.filter.sortBy)
+  const sortType = useSelector((state: RootState) => state.filter.sortType)
+  const sortValue = useSelector((state: RootState) => state.filter.sortValue)
 
   useEffect(() => {
     if(window.location.search) {
@@ -50,6 +51,13 @@ export default function Products() {
         dispatch(setMinStock(stocks[0]))
         dispatch(setMaxStock(stocks[1]))
       }
+      if(wls.find(item => item.includes('sortBy'))) {
+        const sortingBy = wls.find(item => item.includes('sortBy'))!.slice(7)
+        const sortingType = wls.find(item => item.includes('sortType'))!.slice(9)
+        dispatch(setSortType(sortingType))
+        dispatch(setSortBy(sortingBy))
+        dispatch(setSortValue(`${sortingType}-${sortingBy}`))
+      }
     } 
   }, [])
 
@@ -64,10 +72,25 @@ export default function Products() {
     const types = filterType.length > 0 ? `type=${filterType.join('↕')}` : ''
     const price = minPrice > 1 || maxPrice < 50 || (minPrice > 1 && maxPrice < 50) ? `price=${minPrice}↕${maxPrice}` : ''
     const stock = minStock > 1 || maxStock < 145 || (minStock > 1 && maxStock < 145) ? `stock=${minStock}↕${maxStock}` : ''
-    let queryString = `?${types}${types.length > 0 && leafs.length > 0 ? '&' : ''}${leafs}${(types.length > 0 && leafs.length > 0 && price) || (types.length > 0 && price) || (leafs.length > 0 && price) ? '&' : ''}${price}${(types.length > 0 && leafs.length > 0 && stock) || (types.length > 0 && leafs.length > 0 && price && stock) || (types.length > 0 && stock) || (leafs.length > 0 && stock) || (price && stock) ? '&' : ''}${stock}`
-    
+    const sortingType = sortType.length > 0 ? `sortType=${sortType}` : ''
+    const sortingBy = sortBy.length > 0 ? `sortBy=${sortBy}` : ''
+    const filtersArr = [types, leafs, price, stock, sortingType, sortingBy]
+
+    let queryString = `?`
+    filtersArr.forEach(item => {
+      if(queryString.length === 1 && item) queryString += item
+      else if(queryString.length > 1 && item) queryString += `&${item}`
+    })
+
     navigate(queryString)
-  }, [filterLeaf, filterType, minPrice, maxPrice, minStock, maxStock])
+  }, [filterLeaf, filterType, minPrice, maxPrice, minStock, maxStock, sortType, sortBy])
+
+  const sortTypeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const e = event.currentTarget.value.split('-')
+    dispatch(setSortType(e[0]))
+    dispatch(setSortBy(e[1]))
+    dispatch(setSortValue(event.currentTarget.value))
+  }
 
   const teasArr = teas.filter(item => {
     if (filterLeaf.length === 0 && filterType.length === 0) {
@@ -85,44 +108,40 @@ export default function Products() {
       return filterType.includes(item.type)
     }
     return
-  }).filter(item => item.price <= maxPrice && item.price >= minPrice && item.stock >= minStock && item.stock <= maxStock).map((tea: Tea, i:number) => <ProductsCard key={i} tea={tea} />)
+  }).filter(item => item.price <= maxPrice && item.price >= minPrice && item.stock >= minStock && item.stock <= maxStock)
+  .sort((a, b): number => {
+    if(sortBy === 'asc' && a[sortType] < b[sortType]) {
+      return -1
+    } 
+    if(sortBy === 'desc' && a[sortType] > b[sortType]) {
+      return -1
+    } 
+    else return 0
+  })
+  .map((tea: Tea, i:number) => <ProductsCard key={i} tea={tea} />)
   return (
     <div className="catalog__products products">
       <div className="prdoucts-info">
         <div className="products__sort">
-          <select className="products__sortbar sortbar">
-            <option className="sortbar-item" value="sort-title" disabled>Sort options:</option>
-            <option className="sortbar-item" value="sort-title">Sort by price ASC</option>
-            <option className="sortbar-item" value="sort-title">Sort by price DESC</option>
+          <select className="products__sortbar sortbar" value={sortValue} onChange={(e) => sortTypeHandler(e)}>
+            <option className="sortbar-item" value="sort-title" disabled >Sort options:</option>
+            <option className="sortbar-item" value="price-asc" >Sort by price ASC</option>
+            <option className="sortbar-item" value="price-desc">Sort by price DESC</option>
+            <option className="sortbar-item" value="rating-asc">Sort by rating ASC</option>
+            <option className="sortbar-item" value="rating-desc">Sort by rating DESC</option>
           </select>
-          
         </div>
         <div className="products-amount">
           <span className="products-amount__title">Found: </span>
           <span className="products-amount__count">{teasArr.length}</span>
-          
         </div>
-        
         <div className="filters__search-field">
           <input className="search-field" type="search" placeholder="search"/>
         </div>
       </div>
       <div className="products-items">
         {teasArr}
-        {/* {teas.map(tea => <ProductsCard title={tea.title} />)} */}
-        {/* <ProductsCard />
-        <ProductsCard />
-        <ProductsCard />
-        <ProductsCard />
-        <ProductsCard /> */}
-        
-        
- 
-        
       </div>
-      
-      
-      
     </div>
   )
 }

@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
-console.log(store)
 root.render(
   <BrowserRouter>
     <Provider store={store}>

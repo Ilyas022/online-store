@@ -34,7 +34,7 @@ export default function Filters() {
     navigator.clipboard.writeText(window.location.href)
     currentTarget.innerHTML = 'Copied!'
     setTimeout(() => {
-      console.log(currentTarget.innerHTML = 'Copy link')
+      currentTarget.innerHTML = 'Copy link'
     }, 2000);
   }
 
