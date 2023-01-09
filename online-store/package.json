@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": ".",
+  "homepage": "https://ilyas022.github.io/online-store/online-store",
   "scripts": {
     "start": "webpack serve --env dev",
     "build": "webpack",
