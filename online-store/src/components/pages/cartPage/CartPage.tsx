@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
+import { CartStateItem } from '../../../store/slices/cartSlice';
 import { RootState } from '../../../store/store';
 import CartProduct from "./cartProduct/CartProduct";
 import CartSummary from "./cartSummary/CartSummary";
 
 export default function cartPage() {
-  const products = useSelector((state: RootState) => state.cart)
+  const products : CartStateItem[] = useSelector((state: RootState) => state.cart)
 
   const [displayedNumber, setDisplayedNumber] = useState<number>(products.length > 2 ? 3 : products.length)
 
-  const handleItemsCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleItemsCountChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
     setDisplayedNumber(Number(e.target.value))
   }
 
-  const totalPrice = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
+  const totalPrice : number = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
   const [currentPage, setCurrentPage] = useState<number>(1);
   useEffect(() => setCurrentPage(1), [displayedNumber])
   useEffect(() => setCurrentPage(Math.ceil(products.length / displayedNumber)), [products.length])
-  const handlePreviousPage = () => {
+  const handlePreviousPage = () : void => {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
   }
-  const handleNextPage = () => {
+  const handleNextPage = () : void => {
     if (currentPage !== Math.ceil(products.length / displayedNumber)) {
       setCurrentPage(currentPage + 1);
     }

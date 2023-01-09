@@ -1,3 +1,4 @@
+import { Dispatch } from '@reduxjs/toolkit';
 import React from "react";
 import { useDispatch } from 'react-redux';
 import { addProduct, CartStateItem, deleteProduct } from '../../../../store/slices/cartSlice';
@@ -8,11 +9,11 @@ type CartProductProps = {
 }
 
 export default function CartProduct({product, productNumber} : CartProductProps) {
-  const dispatch = useDispatch();
-  const handleAddProduct = () => {
+  const dispatch: Dispatch = useDispatch();
+  const handleAddProduct = () : void => {
     dispatch(addProduct(product));
   }
-  const handleDeleteProduct = () => {
+  const handleDeleteProduct = () : void => {
     dispatch(deleteProduct(product));
   }
   return (

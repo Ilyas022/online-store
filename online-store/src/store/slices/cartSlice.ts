@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addProduct(state, action){
+    addProduct(state: CartStateItem[], action: {payload : CartStateItem, type : string} ){
       const tea = state.find((el) => el.tea.id === action.payload.tea.id);
       if(!tea){
         state.push(action.payload);
@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
       }
       localStorage.setItem('cartProducts', JSON.stringify(state));
     },
-    deleteProduct(state, action) {
+    deleteProduct(state : CartStateItem[], action: {payload : CartStateItem, type : string}) {
       const tea: CartStateItem | undefined = state.find((el) => el.tea.id === action.payload.tea.id);
       let index : number;
       if(tea) {
