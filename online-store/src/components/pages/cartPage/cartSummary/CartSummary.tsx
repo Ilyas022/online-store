@@ -19,6 +19,7 @@ const promo: Promo[] = [
 
 export default function CartSummary() {
   const products: CartStateItem[] = useSelector((state: RootState) => state.cart);
+  const totalPrice : number = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
   const handleFindPromocode = (e: React.ChangeEvent<HTMLInputElement>) : void => {
     console.log(promo.find((code) => code.id.toLocaleLowerCase() === e.target.value.toLocaleLowerCase()))
   }
@@ -32,7 +33,7 @@ export default function CartSummary() {
           Products: {products ? products.reduce((count, tea) => count + tea.count, 0) : 0}
         </div>
         <div className="cart-summary__products-amount">
-          Amount: {products ? products.reduce((sum, item) => sum + item.count * item.tea.price, 0) : 0}$
+          Amount: {totalPrice}$
         </div>
         <div className="cart-summary__promo">
           <input className="promo-code search-field" type="search" placeholder="Enter promo code" onChange={(e) => handleFindPromocode(e)}></input>
