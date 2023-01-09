@@ -15,3 +15,9 @@ export interface Tea {
 export interface CartItem extends Tea {
   count: number
 }
+
+export interface Promo {
+  id: string
+  name: string
+  discount: number
+}

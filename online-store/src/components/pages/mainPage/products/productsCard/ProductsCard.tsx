@@ -1,20 +1,21 @@
+import { Dispatch } from '@reduxjs/toolkit';
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import { addProduct } from '../../../../../store/slices/cartSlice';
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import { addProduct, CartStateItem } from '../../../../../store/slices/cartSlice';
 import { RootState } from '../../../../../store/store';
 import { Tea } from "../../../../../types";
 
 export default function productsCard({tea}: {tea: Tea}) {
 
-  const navigate = useNavigate(); 
-  const routeChange = () =>{ 
+  const navigate : NavigateFunction = useNavigate(); 
+  const routeChange = () : void =>{ 
     const path = `product`; 
     navigate(path);
   }
-  const dispatch = useDispatch();
-  const products = useSelector((state: RootState) => state.cart)
-  const addProductToCart = () => {
+  const dispatch : Dispatch = useDispatch();
+  const products : CartStateItem[] = useSelector((state: RootState) => state.cart)
+  const addProductToCart = () : void => {
     dispatch(addProduct({tea : tea, count : 1}));
   }
 
