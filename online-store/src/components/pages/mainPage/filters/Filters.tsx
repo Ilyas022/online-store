@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { removeFilterType, setFilterType, removeFilterLeafType, setFilterLeafType, setMinPrice, setMaxPrice, setMinStock, setMaxStock } from "../../../../store/slices/filterSlice";
+import { removeFilterType, setFilterType, removeFilterLeafType, setFilterLeafType, setMinPrice, setMaxPrice, setMinStock, setMaxStock, resetFilters } from "../../../../store/slices/filterSlice";
 import { addTeas } from "../../../../store/slices/teaSlice";
 import { RootState } from "../../../../store/store";
 import { Tea } from "../../../../types";
@@ -29,9 +29,21 @@ export default function Filters() {
       dispatch(setFilterLeafType(e.currentTarget.id))
     }
   }
+  const copyHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const currentTarget = e.currentTarget
+    navigator.clipboard.writeText(window.location.href)
+    currentTarget.innerHTML = 'Copied!'
+    setTimeout(() => {
+      console.log(currentTarget.innerHTML = 'Copy link')
+    }, 2000);
+  }
 
   return (
     <div className="catalog__filters filters">
+      <div className="filters-buttons">
+        <button className="reset-button button" onClick={() => dispatch(resetFilters())}>Reset filters</button>
+        <button className="copy-button button" onClick={(e) => copyHandler(e)} >Copy link</button>
+      </div>
       <div className="filters-list categories">
         <h3 className="filters__title">Categories</h3> 
         <div className="filters-list__item">

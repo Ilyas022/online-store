@@ -21,6 +21,9 @@
   &__search-field {
   }
 }
+.filters-buttons {
+  @include flex(space-between, center)
+}
 .filters-list {
   // .filters-list__item
   &__item {}
