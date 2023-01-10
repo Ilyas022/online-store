@@ -8,7 +8,7 @@ import { resetFilters } from "../store/slices/filterSlice";
 export default function Logo() {
   const dispatch = useDispatch()
   return (
-    <NavLink className="logo" to="/" onClick={() => dispatch(resetFilters())}>
+    <NavLink className="logo" to='./' onClick={() => dispatch(resetFilters())}>
       <img className="logo__img" src={logo} alt="" />
       <div className="logo__text">FIRST TEA COMPANY</div>
   </NavLink>
