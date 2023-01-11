@@ -1,8 +1,8 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { addProduct, CartStateItem } from '../../../../../store/slices/cartSlice';
+import { addProduct, CartStateItem, removeProductFromCart } from '../../../../../store/slices/cartSlice';
 import { RootState } from '../../../../../store/store';
 import { Tea } from "../../../../../types";
 
@@ -15,8 +15,16 @@ export default function productsCard({tea}: {tea: Tea}) {
   }
   const dispatch : Dispatch = useDispatch();
   const products : CartStateItem[] = useSelector((state: RootState) => state.cart)
+  const [isAddedToCart, setIsAddedToCart] = useState(!!(products.find((item) => item.tea.id === tea.id)))
   const addProductToCart = () : void => {
-    dispatch(addProduct({tea : tea, count : 1}));
+    if(!isAddedToCart) {
+      setIsAddedToCart(true);
+      dispatch(addProduct({tea : tea, count : 1}))
+    }
+    else {
+      setIsAddedToCart(false);
+      dispatch(removeProductFromCart({tea : tea, count : 0}));
+    }
   }
 
   return (
@@ -33,7 +41,9 @@ export default function productsCard({tea}: {tea: Tea}) {
             <div className="products-item__stock">Stock: {tea.stock}</div>
             <div className="products-item__hover">
               <button className="products-item__info-button button" onClick={routeChange}>More info</button>
-              <button className="products-item__add-button button" onClick={addProductToCart}>Add to cart</button>
+              <button className="products-item__add-button button" onClick={addProductToCart}>
+                {isAddedToCart ? 'Drop from cart' : 'Add to cart'}
+              </button>
             </div>
             
         </div>

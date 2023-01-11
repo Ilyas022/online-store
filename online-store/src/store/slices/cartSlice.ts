@@ -13,7 +13,7 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct(state: CartStateItem[], action: {payload : CartStateItem, type : string} ){
-      const tea = state.find((el) => el.tea.id === action.payload.tea.id);
+      const tea: CartStateItem | undefined = state.find((el) => el.tea.id === action.payload.tea.id);
       if(!tea){
         state.push(action.payload);
       } else {
@@ -36,10 +36,19 @@ export const cartSlice = createSlice({
       }
       localStorage.setItem('cartProducts', JSON.stringify(state));
     },
+    removeProductFromCart(state : CartStateItem[], action: {payload : CartStateItem, type : string}) {
+      const tea: CartStateItem | undefined = state.find((el) => el.tea.id === action.payload.tea.id);
+      let index : number;
+      if(tea) {
+        index = state.indexOf(tea);
+        state.splice(index,1);
+      }
+      localStorage.setItem('cartProducts', JSON.stringify(state));
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addProduct, deleteProduct } = cartSlice.actions
+export const { addProduct, deleteProduct, removeProductFromCart } = cartSlice.actions
 
 export default cartSlice.reducer
