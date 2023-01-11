@@ -11,7 +11,7 @@ const container = document.getElementById('root');
 const root = createRoot(container!);
 
 root.render(
-  <BrowserRouter basename='/on-str-test'>
+  <BrowserRouter basename='/online-store/online-store'>
     <Provider store={store}>
       <App />
     </Provider>
