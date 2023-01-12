@@ -1,0 +1,12 @@
+.not-found {
+  height: 100%;
+  // .not-found__container
+  &__container {
+    @include flex(center, center);
+    height: 100%;
+  }
+  // .not-found__title
+  &__title {
+    font-size: 48px;
+  }
+}
