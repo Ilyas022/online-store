@@ -1,0 +1,52 @@
+
+.toolbar {
+  @include font(14px, 'OpenSans-Regular');
+  @include flex(space-between);
+  gap: 40px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  // .toolbar__contacts
+  &__contacts {
+    @include flex(start);
+    gap: 40px
+  }
+  // .toolbar__call
+  &__call {}
+  // .toolbar__call-icon
+  &__call-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+  }
+  // .toolbar__map
+  &__map {}
+  // .toolbar__map-icon
+  &__map-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+  }
+  // .toolbar__map-link
+  &__map-link {}
+  // .toolbar__working-time
+  &__working-time {}
+  // .toolbar__shoping-cart
+  &__shoping-cart {
+  }
+}
+.working-time {
+  // .working-time__icon
+  &__icon {}
+  // .working-time__time
+  &__time {}
+}
+.toolbar-shoping-cart {
+  @include flex(start);
+  gap: 10px;
+  font-size: 20px;
+  // .toolbar-shoping-cart__icon
+  &__icon {
+    height: 30px;
+    width: 30px;
+  }
+}

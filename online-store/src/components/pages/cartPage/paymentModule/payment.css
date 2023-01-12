@@ -1,0 +1,122 @@
+.payment {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment__form {
+  padding: 20px;
+  width: 50%;
+  border: 1px white solid;
+  border-radius: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  background-color: rgb(79, 148, 190);
+}
+
+.payment__form > h2 {
+  font-size: xx-large;
+  color: white;
+  align-self: center;
+}
+
+.personal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.personal-form > div {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.personal-input {
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px;
+  outline: none;
+  text-align: center;
+  font-size: large;
+}
+
+.error {
+  color: rgb(154, 16, 16);
+  font-size: large;
+}
+
+.card-form {
+  width: 60%;
+  background-color: rgb(203, 229, 124);
+  align-self: center;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.card-number-details {
+  display: flex;
+  gap: 10px;
+}
+
+.card-type-img {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.card-type-img ~ input {
+  width: 100%;
+}
+
+.card-input {
+  text-align: center;
+  padding: 5px;
+  outline: none;
+  border-radius: 20px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.card-other-details {
+  display: flex;
+  gap: 30px;
+}
+.card-other-details > div {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  gap:10px;
+}
+
+.card-other-details > div > input {
+  width: 100%;
+}
+
+.confirm-btn{
+  align-self: center;
+  padding: 10px 40px;
+  font-size: x-large;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(213, 154, 15);
+  border: 2px white solid;
+}
+
+.card-errors{
+  align-self: center;
+}
