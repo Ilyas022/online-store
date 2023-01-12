@@ -6,48 +6,50 @@ import { CartStateItem } from '../../../store/slices/cartSlice';
 import { RootState } from '../../../store/store';
 import CartProduct from "./cartProduct/CartProduct";
 import CartSummary from "./cartSummary/CartSummary";
+import Payment from './paymentModule/Payment';
 
 
 export default function cartPage() {
-  const products : CartStateItem[] = useSelector((state: RootState) => state.cart)
-  
-  const isValidPage = () : boolean =>{
+  const products: CartStateItem[] = useSelector((state: RootState) => state.cart)
+  const isPaymentShowed: boolean = useSelector((state: RootState) => state.payment.isShowed)
+
+  const isValidPage = (): boolean => {
     const searchParams: URLSearchParams = new URLSearchParams(window.location.search)
-    const searchPage =  Number(searchParams.get('page'));
+    const searchPage = Number(searchParams.get('page'));
     return searchPage ? searchPage > 0 && searchPage <= Math.ceil((products.length / displayedNumber)) : false
   }
 
-  const isValidLimit = () : boolean =>{
+  const isValidLimit = (): boolean => {
     const searchParams: URLSearchParams = new URLSearchParams(window.location.search)
-    const searchLimit =  Number(searchParams.get('limit'));
+    const searchLimit = Number(searchParams.get('limit'));
     return searchLimit ? searchLimit > 0 && searchLimit <= products.length : false
   }
 
-  const [displayedNumber, setDisplayedNumber] = useState<number>(isValidLimit() ? Number((new URLSearchParams(window.location.search)).get('limit')) :products.length > 2 ? 3 : products.length)
+  const [displayedNumber, setDisplayedNumber] = useState<number>(isValidLimit() ? Number((new URLSearchParams(window.location.search)).get('limit')) : products.length > 2 ? 3 : products.length)
 
-  const handleItemsCountChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+  const handleItemsCountChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setDisplayedNumber(Number(e.target.value))
   }
 
-  const totalPrice : number = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
+  const totalPrice: number = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
   const [currentPage, setCurrentPage] = useState<number>(isValidPage() ? Number((new URLSearchParams(window.location.search)).get('page')) : 1);
-  
-  
+
+
   useEffect(() => {
     const searchParams: URLSearchParams = new URLSearchParams(window.location.search)
     searchParams.set('limit', displayedNumber.toString());
     searchParams.set('page', currentPage.toString());
     const newUrl = window.location.pathname + '?' + searchParams.toString();
-    history.pushState(null, '',newUrl);
+    history.pushState(null, '', newUrl);
     currentPage > Math.ceil(products.length / displayedNumber) ? handlePreviousPage() : '';
   }, [displayedNumber, currentPage, products.length])
 
-  const handlePreviousPage = () : void => {
+  const handlePreviousPage = (): void => {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
   }
-  const handleNextPage = () : void => {
+  const handleNextPage = (): void => {
     if (currentPage !== Math.ceil(products.length / displayedNumber)) {
       setCurrentPage(currentPage + 1);
     }
@@ -77,7 +79,7 @@ export default function cartPage() {
             </div>
             <div className="cart-products__body">
               {products.filter((el, i) => i >= (currentPage - 1) * displayedNumber && i < (currentPage * displayedNumber))
-              .map((el, i) => <CartProduct key={el.tea.id} productNumber={i + 1 + displayedNumber*(currentPage - 1)} product={el} />)}
+                .map((el, i) => <CartProduct key={el.tea.id} productNumber={i + 1 + displayedNumber * (currentPage - 1)} product={el} />)}
             </div>
 
           </div>
@@ -86,6 +88,7 @@ export default function cartPage() {
         :
         "Cart is empty"
       }
+      {isPaymentShowed ? <Payment /> : ''}
     </div >
   )
 }
