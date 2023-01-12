@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { CartStateItem } from '../../../../store/slices/cartSlice';
+import { setPayment } from '../../../../store/slices/paymentSlice';
 import { RootState } from '../../../../store/store';
 import { Promo } from '../../../../types';
 
@@ -18,10 +20,14 @@ const promo: Promo[] = [
 ]
 
 export default function CartSummary() {
+  const dispatch = useDispatch();
   const products: CartStateItem[] = useSelector((state: RootState) => state.cart);
   const totalPrice : number = Math.round(products.reduce((sum, item) => sum + (item.tea.price as unknown as number) * item.count, 0) * 100) / 100;
   const handleFindPromocode = (e: React.ChangeEvent<HTMLInputElement>) : void => {
     console.log(promo.find((code) => code.id.toLocaleLowerCase() === e.target.value.toLocaleLowerCase()))
+  }
+  const handleBuyClick = () : void => {
+    dispatch(setPayment(true));
   }
   return (
     <div className="cart-summary">
@@ -42,9 +48,7 @@ export default function CartSummary() {
         <div className="promo-code__promo-helper">
           Promo for test: 'RS', 'EPM'
         </div>
-        <div className="cart-summary__button button">BUY NOW</div>
-
-
+        <div className="cart-summary__button button" onClick={handleBuyClick}>BUY NOW</div>
       </div>
 
 
